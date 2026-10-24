@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 
 const url = process.argv[2];
 
-if (!url) {
+if (!url || !/^(https:\/\/gitee\.com\/|git@gitee\.com:)/.test(url)) {
   console.error(
     "Usage: npm run gitee:setup -- https://gitee.com/<user>/<repo>.git",
   );
@@ -25,12 +25,21 @@ if (remotes.includes("gitee")) {
   console.log("Added gitee remote.");
 }
 
-console.log("");
-console.log("Next (first time only):");
-console.log("  git push -u gitee main");
-console.log("");
-console.log("After the first push, keep Gitee as the primary upstream:");
-console.log("  git branch --set-upstream-to=gitee/main main");
-console.log("");
-console.log("Then synchronize both remotes with:");
-console.log("  npm run sync");
+console.log(`
+Next (first time only):
+
+  1. Publish main to Gitee. Git Credential Manager will ask you to sign in;
+     the project never stores your Gitee password.
+
+       git push -u gitee main
+
+     This also makes gitee/main the upstream of main, so a plain
+     "git pull" and "git status" follow the primary source.
+
+  2. In the Gitee repository settings, set "main" as the default branch,
+     then delete the auto-generated "master" branch.
+
+  3. Synchronize both remotes from now on:
+
+       npm run sync
+`);

@@ -146,21 +146,27 @@ Gitee 是主源仓库，GitHub 是镜像并负责 GitHub Pages 自动部署。�
 - Gitee 主源：<https://gitee.com/ko_kuverse/shougang-park>
 - GitHub 镜像：<https://github.com/ko-kuverse/shougang-archive>
 
-首次接入：
+首次接入（本地已配置 `gitee` 远程时可直接跳到第 2 步）：
 
 ```bash
 npm run gitee:setup -- https://gitee.com/ko_kuverse/shougang-park.git
 git push -u gitee main
-git branch --set-upstream-to=gitee/main main
 ```
 
-首次 `git push` 会由你手动完成 Gitee 登录；项目不会保存你的 Gitee 凭据。之后每次同步：
+首次 `git push` 会由你手动完成 Gitee 登录（Git Credential Manager 弹窗），项目不会保存你的 Gitee 凭据。`-u` 会把 `main` 的上游设为 `gitee/main`，此后 `git status`、`git pull` 都以 Gitee 为准。
+
+Gitee 仓库当前的默认分支是自动生成的 `master`（只有一个 Initial commit）。首次推送后请到 Gitee 仓库设置中：
+
+1. 把默认分支改为 `main`；
+2. 删除 `master` 分支。
+
+之后每次同步：
 
 ```bash
 npm run sync
 ```
 
-`npm run sync` 会先推 Gitee，再推 GitHub。推 GitHub 会触发 `Deploy docs` 工作流并更新 GitHub Pages。脚本要求当前分支为 `main` 且工作区已提交干净。
+`npm run sync` 的顺序是：拉取 Gitee 主源（本地落后时只做快进）→ 推送 Gitee → 推送 GitHub → 校验两个远程的 `main` 指向同一个提交。推 GitHub 会触发 `Deploy docs` 工作流并更新 GitHub Pages。脚本要求当前分支为 `main` 且工作区已提交干净；本地与 Gitee 分叉时会中止，提示先 rebase。
 
 ## 部署到 GitHub Pages
 
