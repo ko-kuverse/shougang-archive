@@ -485,22 +485,39 @@ a:hover {
 
 /* Mobile menu */
 
-.mobile-menu {
+.mobile-menu-layer {
   position: fixed;
-  inset: 0 0 0 auto;
-  margin: 0;
-  width: min(90vw, 380px);
-  max-width: 100vw;
-  height: 100dvh;
-  max-height: 100dvh;
-  padding: 0;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  color: var(--ink);
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.mobile-menu::backdrop {
-  background: rgba(5, 6, 5, 0.65);
+.mobile-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(5, 6, 5, 0.68);
+  cursor: pointer;
+}
+
+.mobile-menu {
+  position: relative;
+  z-index: 1;
+  width: min(90vw, 380px);
+  max-width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
+  outline: none;
 }
 
 .mobile-menu-inner {
