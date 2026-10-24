@@ -29,8 +29,6 @@ jobs:
 
       - id: pages
         uses: actions/configure-pages@v6
-        with:
-          enablement: true
 
       - run: npm run build
         env:
