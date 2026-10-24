@@ -1,0 +1,354 @@
+[
+  {
+    "id": "building-01",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-01.jpg",
+    "thumb": "/images/gallery/building-01-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 01",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-02",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-02.jpg",
+    "thumb": "/images/gallery/building-02-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 02",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-03",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-03.jpg",
+    "thumb": "/images/gallery/building-03-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 03",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-04",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-04.jpg",
+    "thumb": "/images/gallery/building-04-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 04",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-05",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-05.jpg",
+    "thumb": "/images/gallery/building-05-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 05",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-06",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-06.jpg",
+    "thumb": "/images/gallery/building-06-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 06",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-07",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-07.jpg",
+    "thumb": "/images/gallery/building-07-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 07",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-08",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-08.jpg",
+    "thumb": "/images/gallery/building-08-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 08",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-09",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-09.jpg",
+    "thumb": "/images/gallery/building-09-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 09",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-10",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-10.jpg",
+    "thumb": "/images/gallery/building-10-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 10",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-11",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-11.jpg",
+    "thumb": "/images/gallery/building-11-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 11",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-12",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-12.jpg",
+    "thumb": "/images/gallery/building-12-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 12",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-13",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-13.jpg",
+    "thumb": "/images/gallery/building-13-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 13",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-14",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-14.jpg",
+    "thumb": "/images/gallery/building-14-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 14",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "building-15",
+    "category": "园区建筑",
+    "src": "/images/gallery/building-15.jpg",
+    "thumb": "/images/gallery/building-15-thumb.jpg",
+    "caption": "首钢园工业遗存 · 实地记录 15",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-01",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-01.jpg",
+    "thumb": "/images/gallery/scenery-01-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 01",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-02",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-02.jpg",
+    "thumb": "/images/gallery/scenery-02-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 02",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-03",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-03.jpg",
+    "thumb": "/images/gallery/scenery-03-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 03",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-04",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-04.jpg",
+    "thumb": "/images/gallery/scenery-04-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 04",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-05",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-05.jpg",
+    "thumb": "/images/gallery/scenery-05-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 05",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-06",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-06.jpg",
+    "thumb": "/images/gallery/scenery-06-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 06",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-07",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-07.jpg",
+    "thumb": "/images/gallery/scenery-07-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 07",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-08",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-08.jpg",
+    "thumb": "/images/gallery/scenery-08-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 08",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-09",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-09.jpg",
+    "thumb": "/images/gallery/scenery-09-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 09",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-10",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-10.jpg",
+    "thumb": "/images/gallery/scenery-10-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 10",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-11",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-11.jpg",
+    "thumb": "/images/gallery/scenery-11-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 11",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-12",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-12.jpg",
+    "thumb": "/images/gallery/scenery-12-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 12",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-13",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-13.jpg",
+    "thumb": "/images/gallery/scenery-13-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 13",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-14",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-14.jpg",
+    "thumb": "/images/gallery/scenery-14-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 14",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-15",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-15.jpg",
+    "thumb": "/images/gallery/scenery-15-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 15",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-16",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-16.jpg",
+    "thumb": "/images/gallery/scenery-16-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 16",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "scenery-17",
+    "category": "园区风景",
+    "src": "/images/gallery/scenery-17.jpg",
+    "thumb": "/images/gallery/scenery-17-thumb.jpg",
+    "caption": "园区生态与科普展示 · 实地记录 17",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "people-01",
+    "category": "人物",
+    "src": "/images/gallery/people-01.jpg",
+    "thumb": "/images/gallery/people-01-thumb.jpg",
+    "caption": "调研小组现场记录 01",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "people-02",
+    "category": "人物",
+    "src": "/images/gallery/people-02.jpg",
+    "thumb": "/images/gallery/people-02-thumb.jpg",
+    "caption": "调研小组现场记录 02",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "people-03",
+    "category": "人物",
+    "src": "/images/gallery/people-03.jpg",
+    "thumb": "/images/gallery/people-03-thumb.jpg",
+    "caption": "调研小组现场记录 03",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "people-04",
+    "category": "人物",
+    "src": "/images/gallery/people-04.jpg",
+    "thumb": "/images/gallery/people-04-thumb.jpg",
+    "caption": "调研小组现场记录 04",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "people-05",
+    "category": "人物",
+    "src": "/images/gallery/people-05.jpg",
+    "thumb": "/images/gallery/people-05-thumb.jpg",
+    "caption": "调研小组现场记录 05",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "people-06",
+    "category": "人物",
+    "src": "/images/gallery/people-06.jpg",
+    "thumb": "/images/gallery/people-06-thumb.jpg",
+    "caption": "调研小组现场记录 06",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "people-07",
+    "category": "人物",
+    "src": "/images/gallery/people-07.jpg",
+    "thumb": "/images/gallery/people-07-thumb.jpg",
+    "caption": "调研小组现场记录 07",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "people-08",
+    "category": "人物",
+    "src": "/images/gallery/people-08.jpg",
+    "thumb": "/images/gallery/people-08-thumb.jpg",
+    "caption": "调研小组现场记录 08",
+    "credit": "小组实地拍摄"
+  },
+  {
+    "id": "reference-01",
+    "category": "园区建筑",
+    "src": "/images/gallery/reference-01.jpg",
+    "thumb": "/images/gallery/reference-01-thumb.jpg",
+    "caption": "首钢园鸟瞰：高炉、办公区与冷却塔同框",
+    "credit": "资料图，来源于小组汇报 PPT，仅作课堂展示"
+  },
+  {
+    "id": "reference-02",
+    "category": "园区建筑",
+    "src": "/images/gallery/reference-02.jpg",
+    "thumb": "/images/gallery/reference-02-thumb.jpg",
+    "caption": "六工汇：工业遗存里的商业与公共空间",
+    "credit": "资料图，来源于小组汇报 PPT，仅作课堂展示"
+  },
+  {
+    "id": "reference-03",
+    "category": "园区风景",
+    "src": "/images/gallery/reference-03.jpg",
+    "thumb": "/images/gallery/reference-03-thumb.jpg",
+    "caption": "大跳台与群明湖的秋日景观",
+    "credit": "资料图，来源于小组汇报 PPT，仅作课堂展示"
+  },
+  {
+    "id": "reference-04",
+    "category": "园区风景",
+    "src": "/images/gallery/reference-04.jpg",
+    "thumb": "/images/gallery/reference-04-thumb.jpg",
+    "caption": "夜色中的大跳台与冷却塔投影",
+    "credit": "资料图，来源于小组汇报 PPT，仅作课堂展示"
+  }
+]
