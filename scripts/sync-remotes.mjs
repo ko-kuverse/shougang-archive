@@ -1,9 +1,17 @@
 import { execFileSync } from "node:child_process";
 
-// Gitee is the primary source of truth; GitHub is a mirror that deploys Pages.
+// Gitee is the primary source of truth. GitCode Pages and GitHub Pages are
+// mirrors that build from their own copies of main.
 const PRIMARY = "gitee";
 const MIRROR = "origin";
+const EXTRA_MIRRORS = ["gitcode"];
 const BRANCH = "main";
+
+const LABELS = {
+  gitee: "Gitee (primary)",
+  gitcode: "GitCode Pages",
+  origin: "GitHub Pages",
+};
 
 function git(args, options = {}) {
   return execFileSync("git", args, { encoding: "utf8", ...options });
@@ -27,16 +35,12 @@ function revParse(ref) {
 }
 
 function remoteHead(remote, branch) {
-  let output;
   try {
-    output = git(["ls-remote", "--heads", remote, `refs/heads/${branch}`]);
+    const output = git(["ls-remote", "--heads", remote, `refs/heads/${branch}`]);
+    return output.trim().split(/\s+/)[0] || null;
   } catch {
-    fail(
-      `Could not read ${remote}/${branch}. ` +
-        `Check your network connection and the "${remote}" remote URL.`,
-    );
+    return null;
   }
-  return output.trim().split(/\s+/)[0] || null;
 }
 
 function isAncestor(ancestor, descendant) {
@@ -74,7 +78,19 @@ if (dirty) {
   fail("Working tree has uncommitted changes. Commit them before syncing.");
 }
 
-console.log(`Syncing ${PRIMARY} (primary) → ${MIRROR} (mirror).\n`);
+const mirrors = [...EXTRA_MIRRORS, MIRROR].filter((remote) =>
+  remotes.includes(remote),
+);
+
+if (!mirrors.includes("gitcode")) {
+  console.log(
+    "Note: no gitcode remote; skipping GitCode Pages. " +
+      "Add one with: npm run gitcode:setup -- <url>",
+  );
+}
+
+const targetList = mirrors.map((remote) => LABELS[remote] ?? remote).join(" → ");
+console.log(`Syncing ${LABELS[PRIMARY]} → ${targetList}.\n`);
 
 // Pull from the primary first so a second machine never pushes over newer
 // Gitee commits. Fast-forward only: anything else needs a human decision.
@@ -107,7 +123,7 @@ if (primarySha) {
   }
 }
 
-// Gitee first: if the primary push fails, the mirror is never ahead of it.
+// Gitee first: if the primary push fails, no mirror is ahead of it.
 console.log(`→ git push -u ${PRIMARY} ${BRANCH}`);
 try {
   git(["push", "-u", PRIMARY, BRANCH], { stdio: "inherit" });
@@ -118,26 +134,41 @@ try {
   );
 }
 
-console.log(`→ git push ${MIRROR} ${BRANCH}`);
-try {
-  git(["push", MIRROR, BRANCH], { stdio: "inherit" });
-} catch {
-  fail(`Push to ${MIRROR} failed. ${PRIMARY} is updated, the mirror is not.`);
+// Push every mirror. A failure in one must not block the others.
+const failed = new Set();
+
+for (const remote of mirrors) {
+  console.log(`\n→ git push ${remote} ${BRANCH}`);
+  try {
+    git(["push", remote, BRANCH], { stdio: "inherit" });
+  } catch {
+    failed.add(remote);
+    console.error(`✖ Push to ${remote} failed.`);
+  }
 }
 
-// Confirm both remotes really point at the same commit.
+// Confirm every remote really points at the same commit.
 const head = revParse("HEAD");
-for (const remote of [PRIMARY, MIRROR]) {
+
+for (const remote of [PRIMARY, ...mirrors]) {
   const sha = remoteHead(remote, BRANCH);
   if (sha !== head) {
-    fail(
-      `${remote}/${BRANCH} is at ${sha ?? "(missing)"}, expected ${head}. ` +
-        "The push reported success but the remote does not match.",
+    failed.add(remote);
+    console.error(
+      `✖ ${remote}/${BRANCH} is at ${sha ?? "(unreachable or missing)"}, ` +
+        `expected ${head}.`,
     );
   }
 }
 
-console.log(`\n✔ ${PRIMARY}/${BRANCH} and ${MIRROR}/${BRANCH} both at ${head.slice(0, 7)}.`);
+if (failed.size > 0) {
+  fail(`Sync incomplete: ${[...failed].join(", ")} did not match local HEAD.`);
+}
+
+const synced = [PRIMARY, ...mirrors]
+  .map((remote) => `${remote}/${BRANCH}`)
+  .join(", ");
+console.log(`\n✔ ${synced} all at ${head.slice(0, 7)}.`);
 console.log(`  Upstream: ${git(["rev-parse", "--abbrev-ref", "@{u}"]).trim()}`);
 
 if (remoteHead(PRIMARY, "master")) {

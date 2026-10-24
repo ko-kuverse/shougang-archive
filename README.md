@@ -19,7 +19,7 @@
 - MDX（`@mdx-js/mdx`）
 - Pagefind 全文搜索
 - next-themes 深浅色主题
-- 纯静态导出（`output: "export"`），部署到 GitHub Pages
+- 纯静态导出（`output: "export"`），部署到 GitCode Pages / GitHub Pages
 
 ## 本地运行
 
@@ -139,9 +139,9 @@ node scripts/optimize-images.mjs
 - 部分高清资料图来自小组汇报 PPT，仅作课堂展示；原始版权归原作者，如涉版权请联系删除。
 - 公开数据与文献来源见 `/sources`；不新增无来源的数据。
 
-## 双站同步（Gitee 主源）
+## 多站同步（Gitee 主源）
 
-Gitee 是主源仓库，GitHub 是镜像并负责 GitHub Pages 自动部署。第一版不配置 Gitee Pages。
+Gitee 是主源仓库；GitCode Pages 作为国内公网主站，GitHub 作为镜像并负责 GitHub Pages 备份部署。Gitee Pages 已停止服务，不配置。
 
 - Gitee 主源：<https://gitee.com/ko_kuverse/shougang-park>
 - GitHub 镜像：<https://github.com/ko-kuverse/shougang-archive>
@@ -155,10 +155,7 @@ git push -u gitee main
 
 首次 `git push` 会由你手动完成 Gitee 登录（Git Credential Manager 弹窗），项目不会保存你的 Gitee 凭据。`-u` 会把 `main` 的上游设为 `gitee/main`，此后 `git status`、`git pull` 都以 Gitee 为准。
 
-Gitee 仓库当前的默认分支是自动生成的 `master`（只有一个 Initial commit）。首次推送后请到 Gitee 仓库设置中：
-
-1. 把默认分支改为 `main`；
-2. 删除 `master` 分支。
+首次推送后，到 Gitee 仓库设置中把默认分支设为 `main`；如果仓库里还有自动生成的 `master`，一并删除。
 
 之后每次同步：
 
@@ -166,7 +163,41 @@ Gitee 仓库当前的默认分支是自动生成的 `master`（只有一个 Init
 npm run sync
 ```
 
-`npm run sync` 的顺序是：拉取 Gitee 主源（本地落后时只做快进）→ 推送 Gitee → 推送 GitHub → 校验两个远程的 `main` 指向同一个提交。推 GitHub 会触发 `Deploy docs` 工作流并更新 GitHub Pages。脚本要求当前分支为 `main` 且工作区已提交干净；本地与 Gitee 分叉时会中止，提示先 rebase。
+`npm run sync` 的顺序是：拉取 Gitee 主源（本地落后时只做快进）→ 推送 Gitee → 推送 GitCode（已配置时）→ 推送 GitHub → 校验所有远程的 `main` 指向同一个提交。推 GitCode 会触发 GitCode Pages 自动构建，推 GitHub 会触发 `Deploy docs` 工作流并更新 GitHub Pages。脚本要求当前分支为 `main` 且工作区已提交干净；本地与 Gitee 分叉时会中止，提示先 rebase。
+
+## 部署到 GitCode Pages
+
+GitCode Pages 从仓库分支构建静态站点，国内访问较快，默认地址形如 `https://<用户名>.gitcode.io/<仓库名>/`。
+
+前置条件：GitCode 账号完成实名认证，仓库设为公开。
+
+首次接入：
+
+1. 在 GitCode 创建一个空仓库，名称建议用 ASCII，例如 `shougang-archive`。仓库名会进入访问路径，不建议用中文。
+2. 在本地添加远程并推送：
+
+   ```bash
+   npm run gitcode:setup -- https://gitcode.com/<用户名>/shougang-archive.git
+   npm run sync
+   ```
+
+   首次推送会弹出 GitCode 登录。
+3. 在 GitCode 仓库左侧打开 **Pages**（或「服务 → Pages」），启用并填写：
+   - 部署分支：`main`
+   - 构建命令：
+
+     ```bash
+     NEXT_PUBLIC_BASE_PATH=/shougang-archive NEXT_PUBLIC_SITE_URL=https://<用户名>.gitcode.io/shougang-archive npm run build
+     ```
+
+     如果表单有独立的环境变量输入框，把这两个变量填在那里，构建命令只写 `npm run build`。
+   - 输出目录：`out`
+   - Node.js：22（Next 16 要求至少 20.9）
+4. 保存后等待 1–3 分钟，访问 `https://<用户名>.gitcode.io/shougang-archive/`。最终地址以 Pages 面板显示的为准，域名可能是 `gitcode.io` 或 `gitcode.host`。
+
+GitCode Pages 把仓库挂在 `/<仓库名>/` 子路径下，所以构建时必须设置 `NEXT_PUBLIC_BASE_PATH`。GitHub Pages 同样需要；根路径部署（例如 Cloudflare Pages）则不要设置。
+
+之后每次 `npm run sync` 会依次推送 Gitee 主源、GitCode 镜像、GitHub 镜像；GitCode Pages 和 GitHub Pages 都会自动重新构建。
 
 ## 部署到 GitHub Pages
 
