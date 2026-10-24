@@ -144,6 +144,13 @@ for (const remote of mirrors) {
   } catch {
     failed.add(remote);
     console.error(`✖ Push to ${remote} failed.`);
+    if (remote === "gitcode") {
+      console.error(
+        "  GitCode no longer accepts account passwords. Use a personal " +
+          "access token as the password (个人设置 → 访问令牌), or switch to " +
+          "SSH (git@gitcode.com:ab13795/shougang.git).",
+      );
+    }
   }
 }
 

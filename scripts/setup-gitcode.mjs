@@ -57,6 +57,8 @@ Next:
 
   1. Make sure the GitCode account has completed real-name verification and
      the repository is public. The first push prompts for GitCode credentials.
+     GitCode rejects account passwords: create a personal access token at
+     个人设置 → 访问令牌 (scope: write_repository) and use it as the password.
 
        git push gitcode main
 
