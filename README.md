@@ -144,6 +144,7 @@ node scripts/optimize-images.mjs
 Gitee 是主源仓库；GitCode Pages 作为国内公网主站，GitHub 作为镜像并负责 GitHub Pages 备份部署。Gitee Pages 已停止服务，不配置。
 
 - Gitee 主源：<https://gitee.com/ko_kuverse/shougang-park>
+- GitCode 主站：<https://gitcode.com/ab13795/shougang>
 - GitHub 镜像：<https://github.com/ko-kuverse/shougang-archive>
 
 首次接入（本地已配置 `gitee` 远程时可直接跳到第 2 步）：
@@ -167,35 +168,39 @@ npm run sync
 
 ## 部署到 GitCode Pages
 
-GitCode Pages 从仓库分支构建静态站点，国内访问较快，默认地址形如 `https://<用户名>.gitcode.io/<仓库名>/`。
+GitCode Pages 从仓库分支构建静态站点，国内访问较快。当前仓库为 `ab13795/shougang`，站点地址形如 `https://ab13795.gitcode.io/shougang/`。
 
-前置条件：GitCode 账号完成实名认证，仓库设为公开。
+前置条件：GitCode 账号完成实名认证，仓库保持公开。
 
 首次接入：
 
-1. 在 GitCode 创建一个空仓库，名称建议用 ASCII，例如 `shougang-archive`。仓库名会进入访问路径，不建议用中文。
-2. 在本地添加远程并推送：
+1. 仓库已在 GitCode 创建：<https://gitcode.com/ab13795/shougang>。
+2. 本机添加远程（已配置 `gitcode` 时可跳过）：
 
    ```bash
-   npm run gitcode:setup -- https://gitcode.com/<用户名>/shougang-archive.git
+   npm run gitcode:setup -- https://gitcode.com/ab13795/shougang.git
+   ```
+
+3. 推送 `main`（首次会弹出 GitCode 登录）：
+
+   ```bash
    npm run sync
    ```
 
-   首次推送会弹出 GitCode 登录。
-3. 在 GitCode 仓库左侧打开 **Pages**（或「服务 → Pages」），启用并填写：
+4. 在 GitCode 仓库左侧打开 **Pages**（或「服务 → Pages」），启用并填写：
    - 部署分支：`main`
    - 构建命令：
 
      ```bash
-     NEXT_PUBLIC_BASE_PATH=/shougang-archive NEXT_PUBLIC_SITE_URL=https://<用户名>.gitcode.io/shougang-archive npm run build
+     NEXT_PUBLIC_BASE_PATH=/shougang NEXT_PUBLIC_SITE_URL=https://ab13795.gitcode.io/shougang npm run build
      ```
 
      如果表单有独立的环境变量输入框，把这两个变量填在那里，构建命令只写 `npm run build`。
    - 输出目录：`out`
    - Node.js：22（Next 16 要求至少 20.9）
-4. 保存后等待 1–3 分钟，访问 `https://<用户名>.gitcode.io/shougang-archive/`。最终地址以 Pages 面板显示的为准，域名可能是 `gitcode.io` 或 `gitcode.host`。
+5. 保存后等待 1–3 分钟，访问 `https://ab13795.gitcode.io/shougang/`。最终地址以 Pages 面板显示的为准，域名可能是 `gitcode.io` 或 `gitcode.host`。
 
-GitCode Pages 把仓库挂在 `/<仓库名>/` 子路径下，所以构建时必须设置 `NEXT_PUBLIC_BASE_PATH`。GitHub Pages 同样需要；根路径部署（例如 Cloudflare Pages）则不要设置。
+GitCode Pages 把仓库挂在 `/shougang/` 子路径下，所以构建时必须设置 `NEXT_PUBLIC_BASE_PATH=/shougang`。GitHub Pages 同样需要子路径；根路径部署（例如 Cloudflare Pages）则不要设置。
 
 之后每次 `npm run sync` 会依次推送 Gitee 主源、GitCode 镜像、GitHub 镜像；GitCode Pages 和 GitHub Pages 都会自动重新构建。
 
