@@ -139,11 +139,36 @@ node scripts/optimize-images.mjs
 - 部分高清资料图来自小组汇报 PPT，仅作课堂展示；原始版权归原作者，如涉版权请联系删除。
 - 公开数据与文献来源见 `/sources`；不新增无来源的数据。
 
+## 双站同步（Gitee 主源）
+
+Gitee 是主源仓库，GitHub 是镜像并负责 GitHub Pages 自动部署。第一版不配置 Gitee Pages。
+
+- Gitee 主源：<https://gitee.com/ko_kuverse/shougang-park>
+- GitHub 镜像：<https://github.com/ko-kuverse/shougang-archive>
+
+首次接入：
+
+```bash
+npm run gitee:setup -- https://gitee.com/ko_kuverse/shougang-park.git
+git push -u gitee main
+git branch --set-upstream-to=gitee/main main
+```
+
+首次 `git push` 会由你手动完成 Gitee 登录；项目不会保存你的 Gitee 凭据。之后每次同步：
+
+```bash
+npm run sync
+```
+
+`npm run sync` 会先推 Gitee，再推 GitHub。推 GitHub 会触发 `Deploy docs` 工作流并更新 GitHub Pages。脚本要求当前分支为 `main` 且工作区已提交干净。
+
 ## 部署到 GitHub Pages
 
-1. 在 GitHub 创建仓库并推送 `main`。
+1. GitHub 仓库作为镜像（当前为 `ko-kuverse/shougang-archive`），推送 `main`。
 2. Settings → Pages → Source 选择 **GitHub Actions**。
 3. 工作流使用 `actions/configure-pages` 自动取得 `base_path` / `base_url`。
+
+当前 Pages 已启用并上线：<https://ko-kuverse.github.io/shougang-archive/>。日常更新推荐走上面的 `npm run sync`，让 Gitee 主源和 GitHub 镜像保持一致。
 
 本地模拟项目站子路径：
 

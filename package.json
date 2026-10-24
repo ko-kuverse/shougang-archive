@@ -11,7 +11,11 @@
     "postbuild": "node scripts/postbuild.mjs",
     "preview": "node scripts/preview.mjs",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "sync": "node scripts/sync-remotes.mjs",
+    "sync:gitee": "git push gitee main",
+    "sync:github": "git push origin main",
+    "gitee:setup": "node scripts/setup-gitee.mjs"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.1",
